@@ -3,11 +3,11 @@
 // File name   : tcpdf_static.php
 // Version     : 1.1.4
 // Begin       : 2002-08-03
-// Last Update : 2022-08-12
+// Last Update : 2023-09-06
 // Author      : Nicola Asuni - Tecnick.com LTD - www.tecnick.com - info@tecnick.com
 // License     : GNU-LGPL v3 (http://www.gnu.org/copyleft/lesser.html)
 // -------------------------------------------------------------------
-// Copyright (C) 2002-2022 Nicola Asuni - Tecnick.com LTD
+// Copyright (C) 2002-2023 Nicola Asuni - Tecnick.com LTD
 //
 // This file is part of TCPDF software library.
 //
@@ -55,7 +55,7 @@ class TCPDF_STATIC {
 	 * Current TCPDF version.
 	 * @private static
 	 */
-	private static $tcpdf_version = '6.6.2';
+	private static $tcpdf_version = '6.7.5';
 
 	/**
 	 * String alias for total number of pages.
@@ -125,7 +125,7 @@ class TCPDF_STATIC {
 	 * @public static
 	 */
 	public static function getTCPDFProducer() {
-		return "\x54\x43\x50\x44\x46\x20\x28\x68\x74\x74\x70\x3a\x2f\x2f\x77\x77\x77\x2e\x74\x63\x70\x64\x66\x2e\x6f\x72\x67\x29";
+		return "\x54\x43\x50\x44\x46\x20".self::getTCPDFVersion()."\x20\x28\x68\x74\x74\x70\x3a\x2f\x2f\x77\x77\x77\x2e\x74\x63\x70\x64\x66\x2e\x6f\x72\x67\x29";
 	}
 
 	/**
@@ -1780,7 +1780,7 @@ class TCPDF_STATIC {
 			if ($ret === false) {
 				return array();
 			}
-			return $ret;
+			return is_array($ret) ? $ret : array();
 		}
 		// preg_split is bugged - try alternative solution
 		$ret = array();
